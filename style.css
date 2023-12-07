@@ -176,6 +176,7 @@
 }
 
 .content-menu {
+  display: none;
   opacity: 1;
   animation: fadeInMenu .2s ease-in none;
 }
