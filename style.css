@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.image {
+  height: 100vh;
+  position: relative;
+}
+
+.image-bg {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.image-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(40px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.image-comparison {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+  /* aspect-ratio: 16/9; */
+  /* background-color: salmon; */
+}
+
+.image-comparison img {
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+  height: 100%;
+}
+
+.image-before {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+.image-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.label-comparison {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+  width: fit-content;
+  text-align: center;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 200 !important;
+  letter-spacing: .1rem !important;
+  border-radius: 2rem;
+  border: 1px solid rgba(0, 0, 0, .9);
+  background-color: rgba(0, 0, 0, .8);
+  padding: .1rem .7rem;
+}
+
+.label-information {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  width: fit-content;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 200 !important;
+  letter-spacing: .1rem !important;
+  font-size: 1.2em;
+  font-style: italic;
+  animation: showHide 2s ease-in-out infinite;
+}
+
+.hide-image-after {
+  display: none;
+}
+
+.hide-label-image {
+  display: none;
+}
+
+.btn-navigation {
+  width: 150px;
+  color: white !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 200 !important;
+  letter-spacing: .4rem !important;
+}
+
+.btn-navigation a:hover {
+  background-color: rgba(255, 255, 255, .1) !important;
+}
+
+.btn-next,
+.btn-prev,
+.navigation-menu {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, .6);
+  backdrop-filter: blur(40px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.navigation {
+  position: fixed;
+  right: 0;
+  z-index: 99999;
+  top: 50vh;
+  bottom: 50vh;
+  display: grid;
+  align-content: center;
+}
+
+.navigation-content {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: blue;
+  backdrop-filter: blur(40px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.navigation-content .btn-menu {
+  position: relative;
+  overflow: hidden;
+}
+
+.navigation-content .cb-btn-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.content-menu {
+  opacity: 1;
+  animation: fadeInMenu .2s ease-in none;
+}
+
+.navigation-content a {
+  padding: 1rem;
+  color: white !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .3rem !important;
+  font-size: 1.2em;
+}
+
+.navigation-content a:hover {
+  background-color: rgba(255, 255, 255, .1) !important;
+}
+
+@keyframes showHide {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInMenu {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .image-comparison {
+    max-width: 100%;
+    bottom: 10vh;
+  }
+
+  .navigation {
+    bottom: calc(10%);
+    top: unset;
+    right: 0;
+    left: 0;
+    display: grid;
+    justify-content: center;
+  }
+
+  .navigation-content {
+    flex-direction: column;
+  }
+
+  .navigation-content .btn-menu {
+    margin-top: .8rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .image-comparison {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 992px) {
+  .image-comparison {
+    max-width: 100%;
+  }
+}
