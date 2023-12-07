@@ -7,16 +7,30 @@ containerImages.addEventListener('input', function (e) {
   }
 })
 
-$('.image-before').on('mousedown mouseup', function mouseState(e) {
-  if (e.type == "mousedown") {
-    $(this).children('.image-after').addClass('hide-image-after');
-    $(this).children('.label-comparison').removeClass('hide-label-image');
-  } 
-  if (e.type == "mouseup") {
-    $(this).children('.image-after').removeClass('hide-image-after');
-    $(this).children('.label-comparison').addClass('hide-label-image');
-  }
-})
+// $('.image-before').on('mousedown mouseup', function mouseState(e) {
+//   if (e.type == "mousedown") {
+//     $(this).children('.image-after').addClass('hide-image-after');
+//     $(this).children('.label-comparison').removeClass('hide-label-image');
+//   } 
+//   if (e.type == "mouseup") {
+//     $(this).children('.image-after').removeClass('hide-image-after');
+//     $(this).children('.label-comparison').addClass('hide-label-image');
+//   }
+// })
+
+var i = 0, timeOut = 0;
+  
+$('.image-before').on('mousedown touchstart', function(e) {
+  $(this).children('.image-after').addClass('hide-image-after');
+  $(this).children('.label-comparison').removeClass('hide-label-image');
+  timeOut = setInterval(function(){
+    // console.log(i++);
+  }, 100);
+}).bind('mouseup mouseleave touchend', function() {
+  $(this).children('.image-after').removeClass('hide-image-after');
+  $(this).children('.label-comparison').addClass('hide-label-image');
+  clearInterval(timeOut);
+});
 
 $('.btn-menu input:checkbox').change(function(){
   if($(this).is(':checked')){
